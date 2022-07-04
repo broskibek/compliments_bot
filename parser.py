@@ -1,4 +1,3 @@
-cat parser.py
 import requests
 import json
 
@@ -19,16 +18,12 @@ headers = {
 'X-Requested-With': 'XMLHttpRequest'
 }
 
-
-for i in range(50):
+while 1:
+#for i in range(50):
         res = requests.get(url, headers = headers)
         parsed_text = json.loads(res.text)
         list_of_dict_values = list(parsed_text.values())
-        # print(list_of_dict_values[1])
         if list_of_dict_values[1] not in list_of_compliments:
                 list_of_compliments.append(list_of_dict_values[1])
-        #       print(len(list_of_compliments))
         else:
                 pass
-        # print(list_of_compliments)
-#print(list_of_compliments)
