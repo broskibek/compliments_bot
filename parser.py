@@ -1,5 +1,7 @@
 import requests
 import json
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 list_of_compliments = []
 
@@ -18,12 +20,14 @@ headers = {
 'X-Requested-With': 'XMLHttpRequest'
 }
 
-while 1:
-#for i in range(50):
-        res = requests.get(url, headers = headers)
+# while 1:
+for i in range(50):
+        res = requests.get(url, headers = headers, verify = False)
         parsed_text = json.loads(res.text)
         list_of_dict_values = list(parsed_text.values())
+        # print(list_of_dict_values[1])
         if list_of_dict_values[1] not in list_of_compliments:
                 list_of_compliments.append(list_of_dict_values[1])
+                # print(list_of_compliments[i])
         else:
                 pass
