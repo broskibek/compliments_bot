@@ -21,7 +21,7 @@ headers = {
 }
 
 # while 1:
-for i in range(50):
+for i in range(150):
         res = requests.get(url, headers = headers, verify = False)
         parsed_text = json.loads(res.text)
         list_of_dict_values = list(parsed_text.values())
